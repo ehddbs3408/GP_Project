@@ -19,4 +19,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     BWindow game;
     game.Run(hInstance, lpCmdLine, nCmdShow);
     return 0;
+
+    //test
 }
