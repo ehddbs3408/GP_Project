@@ -10,6 +10,7 @@
 #include "KeyMgr.h"
 #include "SceneMgr.h"
 #include "SoundMgr.h"
+#include "Boss.h"
 Scene_Start::Scene_Start()
 {
 }
@@ -26,6 +27,14 @@ void Scene_Start::Enter()
 	pObj->SetPos(Vec2(Core::GetInst()->GetResolution().x/2, Core::GetInst()->GetResolution().y/2));
 	pObj->SetScale(Vec2(100.f,100.f));
 	AddObject(pObj, GROUP_TYPE::PLAYER);
+
+	Boss* boss = new Boss;
+	boss->SetName(L"Monster");
+	boss->SetPos(Vec2((50 + 25 / 2.f), 50.f));
+	boss->SetScale(Vec2(25, 25));
+	boss->SetCenterPos(boss->GetPos());
+	boss->SetMoveDistance(25);
+	AddObject(boss, GROUP_TYPE::MONSTER);
 
 //	Object* pOtherPlayer = new Player(*(Player*)pObj);
 	/*Object* pOtherPlayer = pObj->Clone();
