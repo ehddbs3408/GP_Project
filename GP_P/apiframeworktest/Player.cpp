@@ -18,17 +18,17 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(20.f, 30.f));
 
 	// image 업로드
-	Image* pImg = ResMgr::GetInst()->ImgLoad(L"PlayerAni", L"Image\\jiwoo.bmp");
+	Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Jiwoo.bmp");
 
-	// animator 생성 및 animation 사용
-	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"Jiwoofront", pImg, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->Play(L"Jiwoofront", true);
+	//// animator 생성 및 animation 사용
+	//CreateAnimator();
+	//GetAnimator()->CreateAnimation(L"Jiwoofront", pImg, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->Play(L"Jiwoofront", true);
 
-	// animation offset 위로 올리기. 
-	Animation* pAnim = GetAnimator()->FindAnimation(L"Jiwoofront");
-	for(size_t i=0;i<pAnim->GetMaxFrame();i++)
-		pAnim->GetFrame(i).vOffset = Vec2(10.f, -50.f);
+	//// animation offset 위로 올리기. 
+	//Animation* pAnim = GetAnimator()->FindAnimation(L"Jiwoofront");
+	//for(size_t i=0;i<pAnim->GetMaxFrame();i++)
+	//	pAnim->GetFrame(i).vOffset = Vec2(10.f, -50.f);
 }
 Player::~Player()
 {
@@ -38,14 +38,14 @@ Player::~Player()
 void Player::Update()
 {
 	Vec2 vPos = GetPos();
-	if(KEY_HOLD(KEY::UP))
-	{
-		vPos.y -= 300.f * fDT;
-	}
-	if (KEY_HOLD(KEY::DOWN))
-	{
-		vPos.y += 300.f * fDT;
-	}
+	//if(KEY_HOLD(KEY::UP))
+	//{
+	//	vPos.y -= 300.f * fDT;
+	//}
+	//if (KEY_HOLD(KEY::DOWN))
+	//{
+	//	vPos.y += 300.f * fDT;
+	//}
 	if (KEY_HOLD(KEY::LEFT))
 	{
 		vPos.x -= 300.f * fDT;
@@ -56,7 +56,7 @@ void Player::Update()
 	}
 	if (KEY_TAP(KEY::SPACE))
 	{
-		CreateBullet();
+		// CreateBullet();
 	}
 	SetPos(vPos);
 	GetAnimator()->Update();
@@ -77,6 +77,7 @@ void Player::CreateBullet()
 	//Scene* pCurScene = SceneMgr::GetInst()->GetCurScene();
 	//pCurScene->AddObject(pBullet,GROUP_TYPE::BULLET);
 }
+
 void Player::Render(HDC _dc)
 {
 	Component_Render(_dc);
