@@ -10,18 +10,26 @@ private:
 	UINT	m_iID;     // 충돌체 고유한 ID 값
 	static UINT g_iNextID;
 	UINT    m_iCheck;
+
+	Layer m_lLayer;
 public:
 	Collider();
+	Collider(const Layer layer);
 	Collider(const Collider& _origin);
 	~Collider();
 public:
 	void SetOffsetPos(Vec2 _vPos) { m_vOffsetPos = _vPos; }
 	void SetScale(Vec2 _vScale) { m_vScale = _vScale; }
+	void SetLayer(Layer layer) { m_lLayer = layer; }
+
 	Vec2 GetOffsetPos() { return m_vOffsetPos; }
 	Vec2 GetScale() { return m_vScale; }
 	UINT GetID() {	return m_iID; }
 	Vec2 GetFinalPos() { return m_vFinalPos; }
 	Object* GetObj() { return m_pOwner; }
+
+	bool CompareLayer(Layer layer) { return m_lLayer == layer; }
+	
 public:
 	void FinalUpdate();
 	void Render(HDC _dc);

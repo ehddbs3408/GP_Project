@@ -13,6 +13,7 @@ Bullet::Bullet()
 	m_vDir.Normalize();
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(15.f, 15.f));
+	GetCollider()->SetLayer(Layer::Bullet);
 }
 
 Bullet::~Bullet()
@@ -58,8 +59,7 @@ void Bullet::Render(HDC _dc)
 
 void Bullet::EnterCollision(Collider* _pOther)
 {
-	Object* pOtherObj = _pOther->GetObj();
-	if (pOtherObj->GetName() == L"Monster")
+	if (_pOther->CompareLayer(Layer::Player))
 	{
 		DeleteObject(this);
 	}

@@ -47,6 +47,16 @@ enum class GROUP_TYPE
 	END = 32,
 };
 
+enum class Layer
+{
+	Default = 0,
+	Player = 1,
+	Enemy = 2,
+	Bullet = 3,
+	Ground = 4
+};
+
+
 enum class SCENE_TYPE
 {
 	START,

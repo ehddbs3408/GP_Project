@@ -7,6 +7,14 @@ UINT Collider::g_iNextID = 0;
 Collider::Collider()
 	: m_pOwner(nullptr)
 	, m_iID(g_iNextID++)
+	, m_lLayer(Layer::Default)
+{
+
+}
+Collider::Collider(const Layer layer)
+	: m_pOwner(nullptr)
+	, m_iID(g_iNextID++)
+	, m_lLayer(layer)
 {
 
 }
@@ -15,6 +23,7 @@ Collider::Collider(const Collider& _origin)
 	, m_vOffsetPos(_origin.m_vOffsetPos)
 	, m_vScale(_origin.m_vScale)
 	, m_iID(g_iNextID++)
+	, m_lLayer(_origin.m_lLayer)
 {
 }
 Collider::~Collider()

@@ -86,6 +86,12 @@
     <Filter Include="Engine\03. Manager\SoundMgr">
       <UniqueIdentifier>{e09d7cab-b2dc-4a5f-8924-8af5317c88d2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\04. Object\Monster\Boss">
+      <UniqueIdentifier>{78eab5fb-6ef4-401f-8afb-1dd05e9e2509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Object\Monster\Boss\Turret">
+      <UniqueIdentifier>{00a9137f-146d-4a8e-a17c-834179ad01be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -187,6 +193,12 @@
     <ClInclude Include="GGM_Player.h">
       <Filter>Engine\04. Object\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Engine\04. Object\Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Turret.h">
+      <Filter>Engine\04. Object\Monster\Boss\Turret</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="apiframeworktest.rc">
@@ -283,6 +295,12 @@
     </ClCompile>
     <ClCompile Include="GGM_Player.cpp">
       <Filter>Engine\04. Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Engine\04. Object\Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Turret.cpp">
+      <Filter>Engine\04. Object\Monster\Boss\Turret</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
