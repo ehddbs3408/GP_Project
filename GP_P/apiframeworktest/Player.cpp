@@ -16,9 +16,14 @@ Player::Player()
 	// collider 새성
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f, 30.f));
+	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
+	moveSpeed = 300.f;
+	dashSpeed = 10000.f;
+	direction = 0;
+	dashDelay = 1;
 
 	// image 업로드
-	Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Jiwoo.bmp");
+	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 
 	// animator 생성 및 animation 사용
 	CreateAnimator();
@@ -38,28 +43,58 @@ Player::~Player()
 void Player::Update()
 {
 	Vec2 vPos = GetPos();
-	//if(KEY_HOLD(KEY::UP))
-	//{
-	//	vPos.y -= 300.f * fDT;
-	//}
-	//if (KEY_HOLD(KEY::DOWN))
-	//{
-	//	vPos.y += 300.f * fDT;
-	//}
+	dashCooltime += fDT * 2.f;
+
+	if(KEY_HOLD(KEY::UP))
+	{
+		vPos.y -= moveSpeed * fDT;
+		direction = (int)Direction::Up;
+	}
+	if (KEY_HOLD(KEY::DOWN))
+	{
+		vPos.y += moveSpeed * fDT;
+		direction = (int)Direction::Down;
+	}
 	if (KEY_HOLD(KEY::LEFT))
 	{
-		vPos.x -= 300.f * fDT;
+		vPos.x -= moveSpeed * fDT;
+		direction = (int)Direction::Left;
 	}
 	if (KEY_HOLD(KEY::RIGHT))
 	{
-		vPos.x += 300.f * fDT;
+		vPos.x += moveSpeed * fDT;
+		direction = (int)Direction::Right;
 	}
 	if (KEY_TAP(KEY::SPACE))
 	{
+		if (dashCooltime < dashDelay) {
+			return;
+		}
+		dashCooltime = 0.f;
+		switch (direction)
+		{
+		case (int)Direction::Up:
+			vPos.y -= dashSpeed * fDT * 5;
+			break;
+		case (int)Direction::Down:
+			vPos.y += dashSpeed * fDT * 5;
+			break;
+		case (int)Direction::Left:
+			vPos.x -= dashSpeed * fDT * 5;
+			break;
+		case (int)Direction::Right:
+			vPos.x += dashSpeed * fDT * 5;
+			break;
+		default:
+			break;
+		}
+
+		//Dash(vPos);
+
 		// CreateBullet();
 	}
 	SetPos(vPos);
-	GetAnimator()->Update();
+	//GetAnimator()->Update();
 }
 
 void Player::CreateBullet()
@@ -78,27 +113,51 @@ void Player::CreateBullet()
 	//pCurScene->AddObject(pBullet,GROUP_TYPE::BULLET);
 }
 
+void Player::Dash(Vec2 vPos) {
+
+	switch (direction)
+	{
+	case (int)Direction::Up:
+		vPos.y -= dashSpeed * fDT;
+		break;
+	case (int)Direction::Down:
+		vPos.y += dashSpeed * fDT;
+		break;
+	case (int)Direction::Left:
+		vPos.x -= dashSpeed * fDT;
+		break;
+	case (int)Direction::Right:
+		vPos.x += dashSpeed * fDT;
+		break;
+	default:
+		break;
+	}
+
+	SetPos(vPos);
+
+}
+
 void Player::Render(HDC _dc)
 {
 	Component_Render(_dc);
-	/*int Width = (int)m_pImage->GetWidth();
+	int Width = (int)m_pImage->GetWidth();
 	int Height = (int)m_pImage->GetHeight();
-
-	Vec2 vPos = GetPos();*/
-	//BitBlt(_dc
-	//	,(int)(vPos.x - (float)(Width / 2))
-	//	,(int)(vPos.y - (float)(Height / 2))
-	//    , Width, Height
-	//    , m_pImage->GetDC()
-	//    , 0,0, SRCCOPY);
+	
+	Vec2 vPos = GetPos();
+	BitBlt(_dc
+		,(int)(vPos.x - (float)(Width / 2))
+		,(int)(vPos.y - (float)(Height / 2))
+	    , Width, Height
+	    , m_pImage->GetDC()
+	    , 0,0, SRCCOPY);
 
 	//마젠타 색상 뺄때 transparent: 투명한
 	//TransparentBlt(_dc
-	//	, (int)(vPos.x - (float)(Width / 2))
-	//	, (int)(vPos.y - (float)(Height / 2))
-	//	,Width, Height
+	//	, (int)(vPos.x - (float)(300 / 2))
+	//	, (int)(vPos.y - (float)(300 / 2))
+	//	,300, 300
 	//    , m_pImage->GetDC()
-	//    ,0,0, Width, Height
+	//    ,0,0, 300, 300
 	//    , RGB(255,0,255));
 
 }
