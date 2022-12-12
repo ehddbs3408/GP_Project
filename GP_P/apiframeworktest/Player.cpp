@@ -17,6 +17,10 @@ Player::Player()
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(20.f, 30.f));
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
+	moveSpeed = 300.f;
+	dashSpeed = 10000.f;
+	direction = 0;
+	dashDelay = 1;
 
 	// image ¾÷·Îµå
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
@@ -39,24 +43,54 @@ Player::~Player()
 void Player::Update()
 {
 	Vec2 vPos = GetPos();
-	//if(KEY_HOLD(KEY::UP))
-	//{
-	//	vPos.y -= 300.f * fDT;
-	//}
-	//if (KEY_HOLD(KEY::DOWN))
-	//{
-	//	vPos.y += 300.f * fDT;
-	//}
+	dashCooltime += fDT * 2.f;
+
+	if(KEY_HOLD(KEY::UP))
+	{
+		vPos.y -= moveSpeed * fDT;
+		direction = (int)Direction::Up;
+	}
+	if (KEY_HOLD(KEY::DOWN))
+	{
+		vPos.y += moveSpeed * fDT;
+		direction = (int)Direction::Down;
+	}
 	if (KEY_HOLD(KEY::LEFT))
 	{
-		vPos.x -= 300.f * fDT;
+		vPos.x -= moveSpeed * fDT;
+		direction = (int)Direction::Left;
 	}
 	if (KEY_HOLD(KEY::RIGHT))
 	{
-		vPos.x += 300.f * fDT;
+		vPos.x += moveSpeed * fDT;
+		direction = (int)Direction::Right;
 	}
 	if (KEY_TAP(KEY::SPACE))
 	{
+		if (dashCooltime < dashDelay) {
+			return;
+		}
+		dashCooltime = 0.f;
+		switch (direction)
+		{
+		case (int)Direction::Up:
+			vPos.y -= dashSpeed * fDT * 5;
+			break;
+		case (int)Direction::Down:
+			vPos.y += dashSpeed * fDT * 5;
+			break;
+		case (int)Direction::Left:
+			vPos.x -= dashSpeed * fDT * 5;
+			break;
+		case (int)Direction::Right:
+			vPos.x += dashSpeed * fDT * 5;
+			break;
+		default:
+			break;
+		}
+
+		//Dash(vPos);
+
 		// CreateBullet();
 	}
 	SetPos(vPos);
@@ -79,13 +113,35 @@ void Player::CreateBullet()
 	//pCurScene->AddObject(pBullet,GROUP_TYPE::BULLET);
 }
 
+void Player::Dash(Vec2 vPos) {
+
+	switch (direction)
+	{
+	case (int)Direction::Up:
+		vPos.y -= dashSpeed * fDT;
+		break;
+	case (int)Direction::Down:
+		vPos.y += dashSpeed * fDT;
+		break;
+	case (int)Direction::Left:
+		vPos.x -= dashSpeed * fDT;
+		break;
+	case (int)Direction::Right:
+		vPos.x += dashSpeed * fDT;
+		break;
+	default:
+		break;
+	}
+
+	SetPos(vPos);
+
+}
+
 void Player::Render(HDC _dc)
 {
 	Component_Render(_dc);
 	int Width = (int)m_pImage->GetWidth();
 	int Height = (int)m_pImage->GetHeight();
-
-
 	
 	Vec2 vPos = GetPos();
 	BitBlt(_dc

@@ -7,6 +7,11 @@ class Player :
 {
 private:
     Image* m_pImage;
+    float moveSpeed;
+    float dashSpeed;
+    float dashCooltime;
+    float dashDelay;
+    int direction;
 public:
     Player();
     //Player(const Player& _origin) 
@@ -16,6 +21,7 @@ public:
     ~Player();
 private:
     void CreateBullet();
+    void Dash(Vec2 vPos);
 
 //    Player* Clone{ return new Player(*this); }
     CLONE(Player);
