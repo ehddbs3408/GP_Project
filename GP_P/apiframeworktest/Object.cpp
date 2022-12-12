@@ -13,7 +13,7 @@ Object::Object()
 	: m_vPos{}
 	, m_vScale{}
 	, m_pCollider(nullptr)
-	, m_pAnimator(nullptr)
+	//, m_pAnimator(nullptr)
 	, m_bAlive(true)
 {
 }
@@ -23,7 +23,7 @@ Object::Object(const Object& _origin)
 	, m_vPos(_origin.m_vPos)
 	, m_vScale(_origin.m_vScale)
 	, m_pCollider(nullptr)
-	, m_pAnimator(nullptr)
+	//, m_pAnimator(nullptr)
 	, m_bAlive(true)
 {
 	if (_origin.m_pCollider)
@@ -31,11 +31,11 @@ Object::Object(const Object& _origin)
 		m_pCollider = new Collider(*_origin.m_pCollider);
 		m_pCollider->m_pOwner = this;
 	}
-	if (_origin.m_pAnimator)
-	{
-		m_pAnimator = new Animator(*_origin.m_pAnimator);
-		m_pAnimator->m_pOwner = this;
-	}
+	//if (_origin.m_pAnimator)
+	//{
+	//	m_pAnimator = new Animator(*_origin.m_pAnimator);
+	//	m_pAnimator->m_pOwner = this;
+	//}
 }
 
 Object::~Object()
@@ -54,8 +54,8 @@ void Object::CreateCollider()
 
 void Object::CreateAnimator()
 {
-	m_pAnimator = new Animator;
-	m_pAnimator->m_pOwner = this;
+	//m_pAnimator = new Animator;
+	//m_pAnimator->m_pOwner = this;
 }
 
 void Object::FinalUpdate()
@@ -80,7 +80,7 @@ void Object::Component_Render(HDC _dc)
 	{
 		m_pCollider->Render(_dc);
 	}
-	if (nullptr != m_pAnimator)
-		m_pAnimator->Render(_dc);
+	//if (nullptr != m_pAnimator)
+	//	m_pAnimator->Render(_dc);
 }
 
