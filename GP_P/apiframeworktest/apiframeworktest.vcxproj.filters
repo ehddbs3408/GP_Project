@@ -86,9 +86,6 @@
     <Filter Include="Engine\03. Manager\SoundMgr">
       <UniqueIdentifier>{e09d7cab-b2dc-4a5f-8924-8af5317c88d2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Object\Monster\Boss">
-      <UniqueIdentifier>{8ad9f573-9e81-464f-b3be-c7bdf11743ec}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -187,13 +184,8 @@
     <ClInclude Include="SoundMgr.h">
       <Filter>Engine\03. Manager\SoundMgr</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="GGM_Player.h">
       <Filter>Engine\04. Object\Player</Filter>
-=======
-    <ClInclude Include="Boss.h">
-      <Filter>Engine\04. Object\Monster\Boss</Filter>
->>>>>>> kdy
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,13 +281,8 @@
     <ClCompile Include="SoundMgr.cpp">
       <Filter>Engine\03. Manager\SoundMgr</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="GGM_Player.cpp">
       <Filter>Engine\04. Object\Player</Filter>
-=======
-    <ClCompile Include="Boss.cpp">
-      <Filter>Engine\04. Object\Monster\Boss</Filter>
->>>>>>> kdy
     </ClCompile>
   </ItemGroup>
 </Project>
