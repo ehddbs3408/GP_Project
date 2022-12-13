@@ -18,22 +18,22 @@ Player::Player()
 	GetCollider()->SetScale(Vec2(20.f, 30.f));
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 	moveSpeed = 300.f;
-	dashSpeed = 10000.f;
+	dashDistance = 150.f;
 	direction = 0;
 	dashDelay = 1;
 
 	// image 업로드
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 
-	// animator 생성 및 animation 사용
-	CreateAnimator();
-	GetAnimator()->CreateAnimation(L"Jiwoofront", pImg, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
-	GetAnimator()->Play(L"Jiwoofront", true);
+	//// animator 생성 및 animation 사용
+	//CreateAnimator();
+	//GetAnimator()->CreateAnimation(L"Jiwoofront", pImg, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
+	//GetAnimator()->Play(L"Jiwoofront", true);
 
-	// animation offset 위로 올리기. 
-	Animation* pAnim = GetAnimator()->FindAnimation(L"Jiwoofront");
-	for(size_t i=0;i<pAnim->GetMaxFrame();i++)
-		pAnim->GetFrame(i).vOffset = Vec2(10.f, -50.f);
+	//// animation offset 위로 올리기. 
+	//Animation* pAnim = GetAnimator()->FindAnimation(L"Jiwoofront");
+	//for(size_t i=0;i<pAnim->GetMaxFrame();i++)
+	//	pAnim->GetFrame(i).vOffset = Vec2(10.f, -50.f);
 }
 Player::~Player()
 {
@@ -74,16 +74,21 @@ void Player::Update()
 		switch (direction)
 		{
 		case (int)Direction::Up:
-			vPos.y -= dashSpeed * fDT * 5;
+			vPos.y -= dashDistance;
 			break;
 		case (int)Direction::Down:
-			vPos.y += dashSpeed * fDT * 5;
+			vPos.y += dashDistance;
 			break;
 		case (int)Direction::Left:
-			vPos.x -= dashSpeed * fDT * 5;
+			vPos.x -= dashDistance;
 			break;
 		case (int)Direction::Right:
-			vPos.x += dashSpeed * fDT * 5;
+			vPos.x += dashDistance;
+		//{
+		//	float testdt = fDT;
+		//	float test = dashSpeed * testdt;
+		//	vPos.x += test;
+		//}
 			break;
 		default:
 			break;
@@ -118,16 +123,16 @@ void Player::Dash(Vec2 vPos) {
 	switch (direction)
 	{
 	case (int)Direction::Up:
-		vPos.y -= dashSpeed * fDT;
+		vPos.y -= dashDistance * fDT;
 		break;
 	case (int)Direction::Down:
-		vPos.y += dashSpeed * fDT;
+		vPos.y += dashDistance * fDT;
 		break;
 	case (int)Direction::Left:
-		vPos.x -= dashSpeed * fDT;
+		vPos.x -= dashDistance * fDT;
 		break;
 	case (int)Direction::Right:
-		vPos.x += dashSpeed * fDT;
+		vPos.x += dashDistance * fDT;
 		break;
 	default:
 		break;

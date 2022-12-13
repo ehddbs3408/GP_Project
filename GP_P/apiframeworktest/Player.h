@@ -8,7 +8,7 @@ class Player :
 private:
     Image* m_pImage;
     float moveSpeed;
-    float dashSpeed;
+    float dashDistance;
     float dashCooltime;
     float dashDelay;
     int direction;
