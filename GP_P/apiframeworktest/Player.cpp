@@ -13,19 +13,24 @@
 #include "Animation.h"
 Player::Player()
 {
-	// collider 새성
+	// collider 생성
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(20.f, 30.f));
+	GetCollider()->SetScale(Vec2(80.f, 70.f));
+	GetCollider()->SetOffsetPos(Vec2(0.f, 25.f));
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 	moveSpeed = 300.f;
-	dashSpeed = 10000.f;
+	dashDistance = 150.f;
 	direction = 0;
 	dashDelay = 1;
 
 	// image 업로드
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 
+<<<<<<< HEAD
 	// animator 생성 및 animation 사용
+=======
+	//// animator 생성 및 animation 사용
+>>>>>>> 5f89d1684721cf32eeeea8d5e040fe59c737b6eb
 	//CreateAnimator();
 	//GetAnimator()->CreateAnimation(L"Jiwoofront", pImg, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 	//GetAnimator()->Play(L"Jiwoofront", true);
@@ -74,16 +79,21 @@ void Player::Update()
 		switch (direction)
 		{
 		case (int)Direction::Up:
-			vPos.y -= dashSpeed * fDT * 5;
+			vPos.y -= dashDistance;
 			break;
 		case (int)Direction::Down:
-			vPos.y += dashSpeed * fDT * 5;
+			vPos.y += dashDistance;
 			break;
 		case (int)Direction::Left:
-			vPos.x -= dashSpeed * fDT * 5;
+			vPos.x -= dashDistance;
 			break;
 		case (int)Direction::Right:
-			vPos.x += dashSpeed * fDT * 5;
+			vPos.x += dashDistance;
+		//{
+		//	float testdt = fDT;
+		//	float test = dashSpeed * testdt;
+		//	vPos.x += test;
+		//}
 			break;
 		default:
 			break;
@@ -118,16 +128,16 @@ void Player::Dash(Vec2 vPos) {
 	switch (direction)
 	{
 	case (int)Direction::Up:
-		vPos.y -= dashSpeed * fDT;
+		vPos.y -= dashDistance * fDT;
 		break;
 	case (int)Direction::Down:
-		vPos.y += dashSpeed * fDT;
+		vPos.y += dashDistance * fDT;
 		break;
 	case (int)Direction::Left:
-		vPos.x -= dashSpeed * fDT;
+		vPos.x -= dashDistance * fDT;
 		break;
 	case (int)Direction::Right:
-		vPos.x += dashSpeed * fDT;
+		vPos.x += dashDistance * fDT;
 		break;
 	default:
 		break;
