@@ -22,14 +22,17 @@ void Turret::FireBullet(Vec2 basePos, Vec2 dir, float power)
 
 void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, int count, float power)
 {
+	float rad = (3.14 * 2) / count;
 
 	for (int i = 0; i < count; i++)
 	{
-		FireBullet(basePos, baseDir, power);
+		float x = cos(rad * i);
+		float y = sin(rad * i);
+		FireBullet(basePos, Vec2(x,y).Normalize(), power);
 	}
 }
 
-void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, float power, float duration)
+void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, int count, float power, float duration)
 {
 }
 

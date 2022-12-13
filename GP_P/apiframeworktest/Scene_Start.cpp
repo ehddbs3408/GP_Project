@@ -24,12 +24,12 @@ void Scene_Start::Enter()
 	SoundMgr::GetInst()->Play(L"BGM");
 	// Object Ãß°¡
 	Object* pObj = new Player;
-	pObj->SetPos(Vec2(Core::GetInst()->GetResolution().x/2, Core::GetInst()->GetResolution().y/2));
+	pObj->SetPos(Vec2(Core::GetInst()->GetResolution().x/2, (Core::GetInst()->GetResolution().y / 2)) );
 	pObj->SetScale(Vec2(100.f,100.f));
 	AddObject(pObj, GROUP_TYPE::PLAYER);
 
 	Object* boss = new Boss;
-	boss->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2, Core::GetInst()->GetResolution().y / 2));
+	boss->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2 - 50, (Core::GetInst()->GetResolution().y / 2)));
 	boss->SetScale(Vec2(100.f, 100.f));
 	AddObject(boss, GROUP_TYPE::MONSTER);
 
