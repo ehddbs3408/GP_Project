@@ -13,9 +13,10 @@
 #include "Animation.h"
 Player::Player()
 {
-	// collider 货己
+	// collider 积己
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(20.f, 30.f));
+	GetCollider()->SetScale(Vec2(80.f, 70.f));
+	GetCollider()->SetOffsetPos(Vec2(0.f, 25.f));
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 	moveSpeed = 300.f;
 	dashDistance = 150.f;
