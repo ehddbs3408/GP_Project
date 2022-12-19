@@ -4,7 +4,7 @@
 #include "Collider.h"
 Boss::Boss() : m_fSpeed(100.f)
 , m_fMaxDistance(50.f)
-, m_iDir(1)
+, m_iDir(Vec2(0,0))
 , m_iPatternCounter(1)
 , m_TimerCounter(0)
 {
@@ -18,6 +18,7 @@ Boss::~Boss()
 
 void Boss::Update()
 {
+	Move();
 	m_TimerCounter += fDT;
 	FirstPattern();
 	SecondPattern();
@@ -35,8 +36,7 @@ void Boss::FirstPattern()
 
 	if (PatternTimeSet(1, 2))
 	{
-		
-		int a = 1;
+		BossToMove(Vec2(1, 1));
 	}
 
 	if (PatternTimeSet(2, 3))
@@ -53,12 +53,13 @@ void Boss::SecondPattern()
 
 	if (PatternTimeSet(1, 2))
 	{
-		int a = 1;
+
 	}
 
 	if (PatternTimeSet(2, 3))
 	{
-		m_tTurret->CircleFireBullet(GetPos(), Vec2(0, 0), 100, 10);
+
+		
 		m_iPatternCounter++;
 		m_TimerCounter = 0;
 	}
@@ -78,6 +79,17 @@ void Boss::ThirdPattern()
 		m_iPatternCounter++;
 		m_TimerCounter = 0;
 	}
+}
+
+void Boss::Move()
+{
+
+}
+
+void Boss::BossToMove(Vec2 dir)
+{
+	Vec2 pos = GetPos();
+	SetPos(pos + dir);
 }
 
 bool Boss::PatternTimeSet(float firstTime, float secondTime)

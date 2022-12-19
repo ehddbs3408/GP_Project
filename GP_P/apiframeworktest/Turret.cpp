@@ -4,6 +4,7 @@
 
 Turret::Turret()
 {
+
 }
  
 Turret::~Turret()
@@ -34,10 +35,12 @@ void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, int count, float power
 
 void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, int count, float power, float duration)
 {
+
 }
 
 
 
 void Turret::Update()
 {
+
 }

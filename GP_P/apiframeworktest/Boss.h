@@ -7,7 +7,7 @@ private:
     float   m_fSpeed;
     //Vec2    m_vCenterPos;
     float   m_fMaxDistance;
-    int     m_iDir; // 1, -1
+    Vec2     m_iDir; // 1, -1
     int     m_iPatternCounter;
     float  m_TimerCounter;
 
@@ -23,6 +23,8 @@ public:
     virtual void FirstPattern();
     virtual void SecondPattern();
     virtual void ThirdPattern();
+    virtual void Move();
+    virtual void BossToMove(Vec2 pos);
     bool PatternTimeSet(float firstTime, float secondTime);
     
 
