@@ -31,17 +31,19 @@ void SceneMgr::ChangeScene(SCENE_TYPE _eNext)
 void SceneMgr::Init()
 {
 	// Scene 생성
-	m_arrScene[(UINT)SCENE_TYPE::START] = new Scene_Start;
-	m_arrScene[(UINT)SCENE_TYPE::START]->SetName(L"Start Scene");
-	m_arrScene[(UINT)SCENE_TYPE::SCENE_01] = new Scene_01;
-	m_arrScene[(UINT)SCENE_TYPE::SCENE_01]->SetName(L"Scene 01");
+	m_arrScene[(UINT)SCENE_TYPE::GAMESTART] = new Scene_01;
+	m_arrScene[(UINT)SCENE_TYPE::GAMESTART]->SetName(L"Start Scene");
+	m_arrScene[(UINT)SCENE_TYPE::MAIN] = new Scene_Start;
+	m_arrScene[(UINT)SCENE_TYPE::MAIN]->SetName(L"Main");
+	m_arrScene[(UINT)SCENE_TYPE::GAMEOVER] = new Scene_Over;
+	m_arrScene[(UINT)SCENE_TYPE::GAMEOVER]->SetName(L"Over Scene");
 
 //	m_arrScene[(UINT)SCENE_TYPE::TOOL] = new Scene_Tool;
 //	m_arrScene[(UINT)SCENE_TYPE::SCENE_02] = new Scene02;
 
 
 	// 현재 씬 지정
-	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::START];
+	m_pCurScene = m_arrScene[(UINT)SCENE_TYPE::GAMESTART];
 	m_pCurScene->Enter();
 }
 

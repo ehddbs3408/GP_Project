@@ -12,6 +12,8 @@ private:
     float dashCooltime;
     float dashDelay;
     int direction;
+    int playerHP;
+    bool isDead;
 public:
     Player();
     //Player(const Player& _origin) 
@@ -25,6 +27,8 @@ private:
 
 //    Player* Clone{ return new Player(*this); }
     CLONE(Player);
+public:
+    virtual void	EnterCollision(Collider* _pOther);
 public:
     void Update()       override;
     void Render(HDC _dc) override;

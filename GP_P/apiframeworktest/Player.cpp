@@ -17,11 +17,14 @@ Player::Player()
 	CreateCollider();
 	GetCollider()->SetScale(Vec2(80.f, 70.f));
 	GetCollider()->SetOffsetPos(Vec2(0.f, 25.f));
-	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
+	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Playerm.bmp");
 	moveSpeed = 300.f;
 	dashDistance = 150.f;
+	dashCooltime = 0.f;
 	direction = 0;
 	dashDelay = 1;
+	playerHP = 4;
+	isDead = false;
 
 	// image 업로드
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
@@ -143,6 +146,23 @@ void Player::Dash(Vec2 vPos) {
 
 }
 
+void Player::EnterCollision(Collider* _pOther)
+{
+	Object* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"Bullet_Player")
+	{
+		playerHP--;
+		if (playerHP == 0 && !isDead) {
+			isDead = true;
+			DeleteObject(this);
+		}
+		//m_iHp -= 1;
+		//if (m_iHp <= 0)
+		//	DeleteObject(this);
+	}
+}
+
+
 void Player::Render(HDC _dc)
 {
 	Component_Render(_dc);
@@ -150,20 +170,20 @@ void Player::Render(HDC _dc)
 	int Height = (int)m_pImage->GetHeight();
 	
 	Vec2 vPos = GetPos();
-	BitBlt(_dc
-		,(int)(vPos.x - (float)(Width / 2))
-		,(int)(vPos.y - (float)(Height / 2))
-	    , Width, Height
-	    , m_pImage->GetDC()
-	    , 0,0, SRCCOPY);
+
+	//BitBlt(_dc
+	//	,(int)(vPos.x - (float)(Width / 2))
+	//	,(int)(vPos.y - (float)(Height / 2))
+	//    , Width, Height
+	//    , m_pImage->GetDC()
+	//    , 0,0, SRCCOPY);
 
 	//마젠타 색상 뺄때 transparent: 투명한
-	//TransparentBlt(_dc
-	//	, (int)(vPos.x - (float)(300 / 2))
-	//	, (int)(vPos.y - (float)(300 / 2))
-	//	,300, 300
-	//    , m_pImage->GetDC()
-	//    ,0,0, 300, 300
-	//    , RGB(255,0,255));
-
+	TransparentBlt(_dc
+		, (int)(vPos.x - (float)(Width / 2))
+		, (int)(vPos.y - (float)(Height / 2))
+		, Width, Height
+	    , m_pImage->GetDC()
+	    ,0,0, Width, Height
+	    , RGB(255,0,255));
 }
