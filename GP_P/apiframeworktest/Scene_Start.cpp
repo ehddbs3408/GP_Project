@@ -26,7 +26,7 @@ void Scene_Start::Enter()
 	Object* pObj = new Player;
 	pObj->SetPos(Vec2(Core::GetInst()->GetResolution().x/2, (Core::GetInst()->GetResolution().y / 2)) );
 	pObj->SetScale(Vec2(100.f,100.f));
-	AddObject(pObj, GROUP_TYPE::PLAYER);
+	AddObject(pObj, GROUP_TYPE::MONSTER);
 
 	Object* boss = new Boss;
 	boss->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2 - 50, (Core::GetInst()->GetResolution().y / 2)));
@@ -47,23 +47,24 @@ void Scene_Start::Enter()
 	//pMonsterObj->SetCenterPos(pMonsterObj->GetPos());
 	//AddObject(pMonsterObj, GROUP_TYPE::MONSTER);
 
-	// 몬스터 배치
-	Vec2 vResolution(Vec2(Core::GetInst()->GetResolution()));
-	int iMonster = 16;
-	float fMoveDist = 25.f;
-	float fObjScale = 50.f;
-	float fTerm = (vResolution.x - ((fMoveDist + fObjScale /2.f) * 2)) / (float)(iMonster-1);
-	Monster* pMonsterObj = nullptr;
-	for (int i = 0; i < iMonster; i++)
-	{
-		pMonsterObj = new Monster;
-		pMonsterObj->SetName(L"Monster");
-		pMonsterObj->SetPos(Vec2((fMoveDist + fObjScale / 2.f) + (float)i*fTerm, 50.f));
-		pMonsterObj->SetScale(Vec2(fObjScale, fObjScale));
-		pMonsterObj->SetCenterPos(pMonsterObj->GetPos());
-		pMonsterObj->SetMoveDistance(fMoveDist);
-		AddObject(pMonsterObj, GROUP_TYPE::MONSTER);
-	}
+	//// 몬스터 배치
+	//Vec2 vResolution(Vec2(Core::GetInst()->GetResolution()));
+	//int iMonster = 16;
+	//float fMoveDist = 25.f;
+	//float fObjScale = 50.f;
+	//float fTerm = (vResolution.x - ((fMoveDist + fObjScale /2.f) * 2)) / (float)(iMonster-1);
+	//Monster* pMonsterObj = nullptr;
+	//for (int i = 0; i < iMonster; i++)
+	//{
+	//	pMonsterObj = new Monster;
+	//	pMonsterObj->SetName(L"Monster");
+	//	pMonsterObj->SetPos(Vec2((fMoveDist + fObjScale / 2.f) + (float)i*fTerm, 50.f));
+	//	pMonsterObj->SetScale(Vec2(fObjScale, fObjScale));
+	//	pMonsterObj->SetCenterPos(pMonsterObj->GetPos());
+	//	pMonsterObj->SetMoveDistance(fMoveDist);
+	//	AddObject(pMonsterObj, GROUP_TYPE::MONSTER);
+	//}
+
 	//pObj = new Object;
 
 	//pObj->SetPos(Vec2(640.f, 384.f));

@@ -20,8 +20,10 @@ Player::Player()
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 	moveSpeed = 300.f;
 	dashDistance = 150.f;
+	dashCooltime = 0.f;
 	direction = 0;
 	dashDelay = 1;
+	playerHP = 4;
 
 	// image ¾÷·Îµå
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
@@ -143,6 +145,22 @@ void Player::Dash(Vec2 vPos) {
 
 }
 
+void Player::EnterCollision(Collider* _pOther)
+{
+	Object* pOtherObj = _pOther->GetObj();
+	if (pOtherObj->GetName() == L"Bullet_Player")
+	{
+		playerHP--;
+		if (playerHP <= 0) {
+			DeleteObject(this);
+		}
+		//m_iHp -= 1;
+		//if (m_iHp <= 0)
+		//	DeleteObject(this);
+	}
+}
+
+
 void Player::Render(HDC _dc)
 {
 	Component_Render(_dc);
@@ -150,6 +168,7 @@ void Player::Render(HDC _dc)
 	int Height = (int)m_pImage->GetHeight();
 	
 	Vec2 vPos = GetPos();
+
 	BitBlt(_dc
 		,(int)(vPos.x - (float)(Width / 2))
 		,(int)(vPos.y - (float)(Height / 2))
@@ -164,6 +183,5 @@ void Player::Render(HDC _dc)
 	//	,300, 300
 	//    , m_pImage->GetDC()
 	//    ,0,0, 300, 300
-	//    , RGB(255,0,255));
-
+	//    , RGB(255,255,255));
 }
