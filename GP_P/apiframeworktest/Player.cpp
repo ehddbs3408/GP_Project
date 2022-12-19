@@ -26,11 +26,7 @@ Player::Player()
 	// image 업로드
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
 
-<<<<<<< HEAD
 	// animator 생성 및 animation 사용
-=======
-	//// animator 생성 및 animation 사용
->>>>>>> 5f89d1684721cf32eeeea8d5e040fe59c737b6eb
 	//CreateAnimator();
 	//GetAnimator()->CreateAnimation(L"Jiwoofront", pImg, Vec2(0.f, 150.f), Vec2(50.f, 50.f), Vec2(50.f, 0.f), 5, 0.2f);
 	//GetAnimator()->Play(L"Jiwoofront", true);
