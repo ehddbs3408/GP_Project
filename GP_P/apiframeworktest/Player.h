@@ -13,6 +13,7 @@ private:
     float dashDelay;
     int direction;
     int playerHP;
+    bool isDead;
 public:
     Player();
     //Player(const Player& _origin) 

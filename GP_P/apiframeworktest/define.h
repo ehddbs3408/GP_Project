@@ -59,9 +59,9 @@ enum class Layer
 
 enum class SCENE_TYPE
 {
-	START,
-	SCENE_01,
-	TOOL,
+	GAMESTART,
+	MAIN,
+	GAMEOVER,
 	SCENE_02,
 	END,
 };

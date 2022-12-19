@@ -22,6 +22,6 @@ void Scene_01::Update()
 	Scene::Update();
 	if (KEY_TAP(KEY::ENTER))
 	{
-		ChangeScene(SCENE_TYPE::START);
+		ChangeScene(SCENE_TYPE::MAIN);
 	}
 }

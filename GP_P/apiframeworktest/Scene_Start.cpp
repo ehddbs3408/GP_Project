@@ -87,8 +87,5 @@ void Scene_Start::Exit()
 void Scene_Start::Update()
 {  
 	Scene::Update();
-	if (KEY_TAP(KEY::ENTER))
-	{
-		ChangeScene(SCENE_TYPE::SCENE_01);
-	}
+
 }
