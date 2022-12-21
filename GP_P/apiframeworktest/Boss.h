@@ -24,7 +24,7 @@ public:
     virtual void SecondPattern();
     virtual void ThirdPattern();
     virtual void Move();
-    virtual void BossToMove(Vec2 pos);
+    virtual void BossToMove(Vec2 dir,float power );
     bool PatternTimeSet(float firstTime, float secondTime);
     
 
