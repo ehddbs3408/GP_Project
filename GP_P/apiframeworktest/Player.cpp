@@ -156,10 +156,8 @@ void Player::EnterCollision(Collider* _pOther)
 		if (playerHP == 0 && !isDead) {
 			isDead = true;
 			DeleteObject(this);
+			ChangeScene(SCENE_TYPE::GAMEOVER);
 		}
-		//m_iHp -= 1;
-		//if (m_iHp <= 0)
-		//	DeleteObject(this);
 	}
 }
 
