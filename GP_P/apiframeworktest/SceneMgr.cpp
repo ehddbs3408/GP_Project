@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SceneMgr.h"
+#include "Scene_Main.h"
 #include "Scene_Start.h"
-#include "Scene_01.h"
 #include "Scene_Over.h"
 #include "EventMgr.h"
 SceneMgr::SceneMgr()
@@ -32,9 +32,9 @@ void SceneMgr::ChangeScene(SCENE_TYPE _eNext)
 void SceneMgr::Init()
 {
 	// Scene »ý¼º
-	m_arrScene[(UINT)SCENE_TYPE::GAMESTART] = new Scene_01;
+	m_arrScene[(UINT)SCENE_TYPE::GAMESTART] = new Scene_Start;
 	m_arrScene[(UINT)SCENE_TYPE::GAMESTART]->SetName(L"Start Scene");
-	m_arrScene[(UINT)SCENE_TYPE::MAIN] = new Scene_Start;
+	m_arrScene[(UINT)SCENE_TYPE::MAIN] = new Scene_Main;
 	m_arrScene[(UINT)SCENE_TYPE::MAIN]->SetName(L"Main");
 	m_arrScene[(UINT)SCENE_TYPE::GAMEOVER] = new Scene_Over;
 	m_arrScene[(UINT)SCENE_TYPE::GAMEOVER]->SetName(L"Over Scene");

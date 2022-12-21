@@ -15,7 +15,7 @@ void Scene_Over::Update()
 	Scene::Update();
 	if (KEY_TAP(KEY::ENTER))
 	{
-		ChangeScene(SCENE_TYPE::GAMESTART);
+		ChangeScene(SCENE_TYPE::MAIN);
 	}
 }
 

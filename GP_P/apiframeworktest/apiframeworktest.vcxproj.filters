@@ -35,9 +35,6 @@
     <Filter Include="Engine\05. Scene">
       <UniqueIdentifier>{c299ed7c-4b0b-48aa-8a09-2965a8518214}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\05. Scene\Scene_Start">
-      <UniqueIdentifier>{64e8a1cc-319b-4ad1-afce-55d3f089418d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\05. Scene\Scene_Tool">
       <UniqueIdentifier>{01cd37be-d817-459c-a761-909371822aa7}</UniqueIdentifier>
     </Filter>
@@ -77,9 +74,6 @@
     <Filter Include="Engine\03. Manager\EventMgr">
       <UniqueIdentifier>{07718400-e5bc-4fe5-9698-ec9b297ce34f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\05. Scene\Scene_01">
-      <UniqueIdentifier>{08fc7cdf-bc88-4ea8-9fe5-a0ba2266348f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\07. Component\Animation">
       <UniqueIdentifier>{58b065ea-6c5b-4536-9b64-c6b4c80b0082}</UniqueIdentifier>
     </Filter>
@@ -94,6 +88,12 @@
     </Filter>
     <Filter Include="Engine\05. Scene\Scene_Over">
       <UniqueIdentifier>{5299b556-b46c-4e6b-a446-ca3c86391cc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Main">
+      <UniqueIdentifier>{64e8a1cc-319b-4ad1-afce-55d3f089418d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Start">
+      <UniqueIdentifier>{08fc7cdf-bc88-4ea8-9fe5-a0ba2266348f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +136,8 @@
     <ClInclude Include="SceneMgr.h">
       <Filter>Engine\03. Manager\SceneMgr</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_Start.h">
-      <Filter>Engine\05. Scene\Scene_Start</Filter>
+    <ClInclude Include="Scene_Main.h">
+      <Filter>Engine\05. Scene\Scene_Main</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Engine\04. Object\Player</Filter>
@@ -181,8 +181,8 @@
     <ClInclude Include="func.h">
       <Filter>Engine\01. Header</Filter>
     </ClInclude>
-    <ClInclude Include="Scene_01.h">
-      <Filter>Engine\05. Scene\Scene_01</Filter>
+    <ClInclude Include="Scene_Start.h">
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClInclude>
     <ClInclude Include="Animator.h">
       <Filter>Engine\07. Component</Filter>
@@ -245,8 +245,8 @@
     <ClCompile Include="SceneMgr.cpp">
       <Filter>Engine\03. Manager\SceneMgr</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_Start.cpp">
-      <Filter>Engine\05. Scene\Scene_Start</Filter>
+    <ClCompile Include="Scene_Main.cpp">
+      <Filter>Engine\05. Scene\Scene_Main</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Engine\04. Object\Player</Filter>
@@ -287,8 +287,8 @@
     <ClCompile Include="func.cpp">
       <Filter>Engine\01. Header</Filter>
     </ClCompile>
-    <ClCompile Include="Scene_01.cpp">
-      <Filter>Engine\05. Scene\Scene_01</Filter>
+    <ClCompile Include="Scene_Start.cpp">
+      <Filter>Engine\05. Scene\Scene_Start</Filter>
     </ClCompile>
     <ClCompile Include="Animator.cpp">
       <Filter>Engine\07. Component</Filter>
