@@ -92,6 +92,9 @@
     <Filter Include="Engine\04. Object\Monster\Boss\Turret">
       <UniqueIdentifier>{00a9137f-146d-4a8e-a17c-834179ad01be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\05. Scene\Scene_Over">
+      <UniqueIdentifier>{5299b556-b46c-4e6b-a446-ca3c86391cc7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -199,6 +202,9 @@
     <ClInclude Include="Turret.h">
       <Filter>Engine\04. Object\Monster\Boss\Turret</Filter>
     </ClInclude>
+    <ClInclude Include="Scene_Over.h">
+      <Filter>Engine\05. Scene\Scene_Over</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="apiframeworktest.rc">
@@ -301,6 +307,9 @@
     </ClCompile>
     <ClCompile Include="Turret.cpp">
       <Filter>Engine\04. Object\Monster\Boss\Turret</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Over.cpp">
+      <Filter>Engine\05. Scene\Scene_Over</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
