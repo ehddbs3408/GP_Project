@@ -3,7 +3,6 @@
 class Scene_01 :
     public Scene
 {
-private:
 public:
     Scene_01();
     virtual ~Scene_01();

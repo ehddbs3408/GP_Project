@@ -2,6 +2,7 @@
 #include "SceneMgr.h"
 #include "Scene_Start.h"
 #include "Scene_01.h"
+#include "Scene_Over.h"
 #include "EventMgr.h"
 SceneMgr::SceneMgr()
 	: m_pCurScene(nullptr)

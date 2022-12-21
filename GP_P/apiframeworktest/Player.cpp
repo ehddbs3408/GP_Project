@@ -75,6 +75,7 @@ void Player::Update()
 			return;
 		}
 		dashCooltime = 0.f;
+
 		switch (direction)
 		{
 		case (int)Direction::Up:
