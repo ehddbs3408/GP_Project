@@ -19,6 +19,7 @@ Boss::~Boss()
 void Boss::Update()
 {
 	Move();
+	m_tTurret->Update();
 	m_TimerCounter += fDT;
 	FirstPattern();
 	SecondPattern();
@@ -36,7 +37,7 @@ void Boss::FirstPattern()
 
 	if (PatternTimeSet(1, 2))
 	{
-		BossToMove(Vec2(1, 1));
+		//BossToMove(Vec2(500,500),1);
 	}
 
 	if (PatternTimeSet(2, 3))
@@ -53,13 +54,30 @@ void Boss::SecondPattern()
 
 	if (PatternTimeSet(1, 2))
 	{
-
+		m_tTurret->CircleFireBullet(GetPos(), Vec2(0, 0), 15, 5,0.2f);
+		BossToMove(Vec2(50, 50),2);
 	}
 
-	if (PatternTimeSet(2, 3))
+	if (PatternTimeSet(2, 4))
 	{
+		m_tTurret->CircleFireBullet(GetPos(), Vec2(0, 0), 15, 5, 0.2f);
+		BossToMove(Vec2(1200, 50), 4);
+	}
 
-		
+	if (PatternTimeSet(4, 6))
+	{
+		m_tTurret->CircleFireBullet(GetPos(), Vec2(0, 0), 15, 5, 0.2f);
+		BossToMove(Vec2(1200, 700), 4);
+	}
+
+	if (PatternTimeSet(6, 8))
+	{
+		m_tTurret->CircleFireBullet(GetPos(), Vec2(0, 0), 15, 5, 0.2f);
+		BossToMove(Vec2(50, 700), 5);
+	}
+
+	if (PatternTimeSet(10, 20))
+	{
 		m_iPatternCounter++;
 		m_TimerCounter = 0;
 	}
@@ -86,10 +104,11 @@ void Boss::Move()
 
 }
 
-void Boss::BossToMove(Vec2 dir)
+void Boss::BossToMove(Vec2 dir, float power)
 {
 	Vec2 pos = GetPos();
-	SetPos(pos + dir);
+	dir = dir - pos;
+	SetPos(pos + dir.Normalize() * power);
 }
 
 bool Boss::PatternTimeSet(float firstTime, float secondTime)
