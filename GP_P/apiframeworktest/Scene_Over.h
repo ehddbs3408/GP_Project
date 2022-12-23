@@ -11,4 +11,5 @@ public:
 public:
     Scene_Over();
     virtual ~Scene_Over();
+    float overScore;
 };

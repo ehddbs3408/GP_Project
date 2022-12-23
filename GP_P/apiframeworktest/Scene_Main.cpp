@@ -12,6 +12,7 @@
 #include "SoundMgr.h"
 #include "Boss.h"
 #include "TimeMgr.h"
+#include "Scene_Over.h"
 Scene_Main::Scene_Main()
 {
 }
@@ -84,6 +85,7 @@ void Scene_Main::Enter()
 void Scene_Main::Exit()
 {
 	DeleteAll();
+
 	CollisionMgr::GetInst()->CheckReset();
 }
 
