@@ -95,6 +95,9 @@
     <Filter Include="Engine\05. Scene\Scene_Start">
       <UniqueIdentifier>{08fc7cdf-bc88-4ea8-9fe5-a0ba2266348f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Manager\ScoreMgr">
+      <UniqueIdentifier>{5643bd6b-37e8-4ea6-88e2-bc4282b32290}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core.h">
@@ -205,6 +208,9 @@
     <ClInclude Include="Scene_Over.h">
       <Filter>Engine\05. Scene\Scene_Over</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreMgr.h">
+      <Filter>Engine\03. Manager\ScoreMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="apiframeworktest.rc">
@@ -310,6 +316,9 @@
     </ClCompile>
     <ClCompile Include="Scene_Over.cpp">
       <Filter>Engine\05. Scene\Scene_Over</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreMgr.cpp">
+      <Filter>Engine\03. Manager\ScoreMgr</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
