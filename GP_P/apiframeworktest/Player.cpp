@@ -224,4 +224,30 @@ void Player::Render(HDC _dc)
 	    , m_pImage->GetDC()
 	    ,0,0, Width, Height
 	    , RGB(255,0,255));
+
+	LOGFONT lf;
+
+	HFONT font;
+
+	lf.lfHeight = 0;
+	lf.lfWidth = 0;
+	lf.lfEscapement = 0;
+	lf.lfOrientation = 0;
+	lf.lfWeight = 0;
+	lf.lfItalic = 0;
+	lf.lfUnderline = 0;
+	lf.lfStrikeOut = 0;
+	lf.lfCharSet = HANGEUL_CHARSET;
+	lf.lfOutPrecision = 0;
+	lf.lfClipPrecision = 0;
+	lf.lfQuality = 0;
+
+	font = CreateFontIndirect(&lf);
+	SelectObject(_dc, font);
+
+	WCHAR buf[100];
+	RECT rt = { Core::GetInst()->GetResolution().x / 2 - 100, 0, Core::GetInst()->GetResolution().x /2 + 100, 100 };
+	wsprintf(buf, L"PlayerHP : %d", playerHP);
+
+	DrawText(_dc, buf, lstrlen(buf), &rt, DT_CENTER | DT_WORDBREAK);
 }

@@ -35,14 +35,29 @@ void Scene_Start::Update()
 
 void Scene_Start::Render(HDC _dc)
 {
-	//POINT& a = Core::GetResolution();
-	RECT rt = { 0, 0, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
+	LOGFONT lf;
+
+	HFONT font;
+
+	lf.lfHeight = 50;
+	lf.lfWidth = 0;
+	lf.lfEscapement = 0;
+	lf.lfOrientation = 0;
+	lf.lfWeight = 0;
+	lf.lfItalic = 0;
+	lf.lfUnderline = 0;
+	lf.lfStrikeOut = 0;
+	lf.lfCharSet = HANGEUL_CHARSET;
+	lf.lfOutPrecision = 0;
+	lf.lfClipPrecision = 0;
+	lf.lfQuality = 0;
+
+	font = CreateFontIndirect(&lf);
+	SelectObject(_dc, font);
+
+	RECT tRt = { 0, Core::GetInst()->GetResolution().y / 2 - 100, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y - 100 };
+	DrawText(_dc, L"강대희 드립 피하기", -1, &tRt, DT_CENTER | DT_WORDBREAK);
+
+	RECT rt = { 0, Core::GetInst()->GetResolution().y / 2, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
 	DrawText(_dc, L"Press Enter To Start!", -1, &rt, DT_CENTER | DT_WORDBREAK);
 }
-
-//void Scene_Start::Render(HDC _dc)
-//{
-//	RECT rt = { 100, 100, 500, 300 };
-//	DrawText(_dc, L"Press Enter To Start!", -1, &rt, DT_CENTER | DT_WORDBREAK);
-//}
-

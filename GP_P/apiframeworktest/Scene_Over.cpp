@@ -33,14 +33,18 @@ void Scene_Over::Update()
 
 void Scene_Over::Render(HDC _dc)
 {
-	WCHAR buf[100];
-	WCHAR buff[100];
-	RECT rt = { 0, Core::GetInst()->GetResolution().y / 2, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
+	WCHAR scoreBuf[100];
+	WCHAR bestScoreBuf[100];
+	RECT tRt = { 0, Core::GetInst()->GetResolution().y / 2 + 100, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y + 150 };
+	RECT sRt = { 0, Core::GetInst()->GetResolution().y / 2 + 10, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y + 100 };
+	RECT bRt = { 0, Core::GetInst()->GetResolution().y / 2 - 50, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
 
 	overScore = ScoreMgr::GetInst()->GetScore();
-	wsprintf(buf, L"BestScore : %d", ScoreMgr::GetInst()->GetBestScore());
-	wsprintf(buff, L"Score : %d", overScore);
+	wsprintf(scoreBuf, L"Score : %d", overScore);
+	wsprintf(bestScoreBuf, L"BestScore : %d", ScoreMgr::GetInst()->GetBestScore());
 
-	DrawText(_dc, buf, lstrlen(buf), &rt, DT_CENTER | DT_WORDBREAK);
-	DrawText(_dc, buff, lstrlen(buf), &rt, DT_CENTER | DT_WORDBREAK);
+	DrawText(_dc, scoreBuf, lstrlen(scoreBuf), &sRt, DT_CENTER | DT_WORDBREAK);
+	DrawText(_dc, bestScoreBuf, lstrlen(bestScoreBuf), &bRt, DT_CENTER | DT_WORDBREAK);
+
+	DrawText(_dc, L"Press Enter to Restart",-1, &tRt, DT_CENTER | DT_WORDBREAK);
 }
