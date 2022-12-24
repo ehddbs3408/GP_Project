@@ -3,10 +3,8 @@
 class Scene_Main :
     public Scene
 {
-private:
-    float score;
 public:
-    SINGLE(Scene_Main);
+    float score;
 public:
     virtual void Enter() override;
     virtual void Exit() override;
@@ -15,7 +13,5 @@ public:
 public:
     Scene_Main();
     virtual ~Scene_Main();
-public:
-    float GetScore() { return score; }
 };
 

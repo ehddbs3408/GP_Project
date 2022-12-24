@@ -25,13 +25,12 @@ void Scene_Over::Update()
 
 void Scene_Over::Render(HDC _dc)
 {
-	WCHAR buf[100];
-	RECT rt = { 0, Core::GetInst()->GetResolution().y / 2, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
-	float _score = Scene_Main::GetInst()->GetScore();
-
-	_itow((int)_score, buf, 0);
-
-	DrawText(_dc, buf, wcslen(buf), &rt, DT_CENTER | DT_WORDBREAK);
+	//wchar_t score[100] = L"Score : ";
+	//wchar_t* buf = L"";
+	//_itow((int)(Scene_Main::GetScore()), buf, 0);
+	//RECT rt = { 0, Core::GetInst()->GetResolution().y / 2, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
+	//buf = wcscat(score, buf);
+	//DrawText(_dc, buf, wcslen(buf), &rt, DT_CENTER | DT_WORDBREAK);
 }
 
 Scene_Over::Scene_Over()
