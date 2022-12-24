@@ -1,11 +1,8 @@
 #include "pch.h"
 #include "Turret.h"
 #include "Bullet.h"
-#include "TimeMgr.h"
 
-Turret::Turret() :
-	m_fShotTime(0),
-	m_fTime(0)
+Turret::Turret()
 {
 
 }
@@ -38,19 +35,12 @@ void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, int count, float power
 
 void Turret::CircleFireBullet(Vec2 basePos, Vec2 baseDir, int count, float power, float duration)
 {
-	if (m_fTime > m_fShotTime + duration)
-	{
-		m_fShotTime = m_fTime;
-		CircleFireBullet(basePos, baseDir, count, power);
-	}
-}
-
-void Turret::Time(float duration)
-{
 
 }
+
+
 
 void Turret::Update()
 {
-	m_fTime += fDT;
+
 }
