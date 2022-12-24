@@ -11,7 +11,12 @@
 #include "SceneMgr.h"
 #include "SoundMgr.h"
 #include "Boss.h"
-Scene_Main::Scene_Main()
+#include "TimeMgr.h"
+#include "Scene_Over.h"
+#include "ScoreMgr.h"
+Scene_Main::Scene_Main() :
+	score(0),
+	temp(0)
 {
 }
 
@@ -20,6 +25,8 @@ Scene_Main::~Scene_Main()
 }
 void Scene_Main::Enter()
 {
+	ScoreMgr::GetInst()->InitScore();
+	score = 0;
 	SoundMgr::GetInst()->LoadSound(L"BGM", true, L"Sound\\pianobgm.wav");
 	SoundMgr::GetInst()->Play(L"BGM");
 	// Object Ãß°¡
@@ -81,6 +88,7 @@ void Scene_Main::Enter()
 void Scene_Main::Exit()
 {
 	DeleteAll();
+	ScoreMgr::GetInst()->SaveScore(GetScore());
 	CollisionMgr::GetInst()->CheckReset();
 }
 
@@ -88,4 +96,9 @@ void Scene_Main::Update()
 {  
 	Scene::Update();
 
+	temp += fDT;
+	if (temp >= 1) {
+		score += 100;
+		temp -= 1;
+	}
 }
