@@ -34,10 +34,13 @@ void Scene_Over::Update()
 void Scene_Over::Render(HDC _dc)
 {
 	WCHAR buf[100];
+	WCHAR buff[100];
 	RECT rt = { 0, Core::GetInst()->GetResolution().y / 2, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
 
 	overScore = ScoreMgr::GetInst()->GetScore();
-	wsprintf(buf, L"Á¡¼ö : %d", overScore);
+	wsprintf(buf, L"BestScore : %d", ScoreMgr::GetInst()->GetBestScore());
+	wsprintf(buff, L"Score : %d", overScore);
 
 	DrawText(_dc, buf, lstrlen(buf), &rt, DT_CENTER | DT_WORDBREAK);
+	DrawText(_dc, buff, lstrlen(buf), &rt, DT_CENTER | DT_WORDBREAK);
 }

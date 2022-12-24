@@ -3,6 +3,8 @@
 #include "KeyMgr.h"
 #include "SelectGDI.h"
 #include "Core.h"
+#include "SoundMgr.h"
+
 Scene_Start::Scene_Start()
 {
 }
@@ -13,6 +15,8 @@ Scene_Start::~Scene_Start()
 
 void Scene_Start::Enter()
 {
+	SoundMgr::GetInst()->LoadSound(L"BGM", true, L"Sound\\pianobgm.wav");
+	SoundMgr::GetInst()->Play(L"BGM");
 }
 
 void Scene_Start::Exit()

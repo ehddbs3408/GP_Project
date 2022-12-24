@@ -11,20 +11,28 @@
 #include "Collider.h"
 #include "Animator.h"
 #include "Animation.h"
-Player::Player()
+#include "Core.h"
+Player::Player() :
+	moveSpeed(300.f),
+	dashDistance(150.f),
+	dashCooltime(0.f),
+	direction(0),
+	dashDelay(1),
+	playerHP(4),
+	isDead(false)
 {
 	// collider 생성
 	CreateCollider();
-	GetCollider()->SetScale(Vec2(80.f, 70.f));
+	GetCollider()->SetScale(Vec2(40.f, 35.f));
 	GetCollider()->SetOffsetPos(Vec2(0.f, 25.f));
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Playerm.bmp");
-	moveSpeed = 300.f;
-	dashDistance = 150.f;
-	dashCooltime = 0.f;
-	direction = 0;
-	dashDelay = 1;
-	playerHP = 4;
-	isDead = false;
+	//moveSpeed = 300.f;
+	//dashDistance = 150.f;
+	//dashCooltime = 0.f;
+	//direction = 0;
+	//dashDelay = 1;
+	//playerHP = 4;
+	//isDead = false;
 
 	// image 업로드
 	//Image* pImg = ResMgr::GetInst()->ImgLoad(L"Player", L"Image\\Player.bmp");
@@ -51,21 +59,33 @@ void Player::Update()
 
 	if(KEY_HOLD(KEY::UP))
 	{
+		if (vPos.y - moveSpeed * fDT <= 0) {
+			return;
+		}
 		vPos.y -= moveSpeed * fDT;
 		direction = (int)Direction::Up;
 	}
 	if (KEY_HOLD(KEY::DOWN))
 	{
+		if (vPos.y + moveSpeed * fDT >= Core::GetInst()->GetResolution().y - (int)m_pImage->GetHeight()) {
+			return;
+		}
 		vPos.y += moveSpeed * fDT;
 		direction = (int)Direction::Down;
 	}
 	if (KEY_HOLD(KEY::LEFT))
 	{
+		if (vPos.x - moveSpeed * fDT <= (int)m_pImage->GetWidth() / 2) {
+			return;
+		}
 		vPos.x -= moveSpeed * fDT;
 		direction = (int)Direction::Left;
 	}
 	if (KEY_HOLD(KEY::RIGHT))
 	{
+		if (vPos.x + moveSpeed * fDT >= Core::GetInst()->GetResolution().x - (int)m_pImage->GetWidth() / 2) {
+			return;
+		}
 		vPos.x += moveSpeed * fDT;
 		direction = (int)Direction::Right;
 	}
@@ -79,15 +99,31 @@ void Player::Update()
 		switch (direction)
 		{
 		case (int)Direction::Up:
+			if (vPos.y - dashDistance <= 0) {
+				vPos.y = 0;
+				break;
+			}
 			vPos.y -= dashDistance;
 			break;
 		case (int)Direction::Down:
+			if (vPos.y + dashDistance >= Core::GetInst()->GetResolution().y - (int)m_pImage->GetHeight()) {
+				vPos.y = Core::GetInst()->GetResolution().y - (int)m_pImage->GetHeight();
+				break;
+			}
 			vPos.y += dashDistance;
 			break;
 		case (int)Direction::Left:
-			vPos.x -= dashDistance;
+			if (vPos.x - dashDistance <= (int)m_pImage->GetWidth() / 2) {
+				vPos.x = 0 + (int)m_pImage->GetWidth() / 2;
+				break;
+			}
+			vPos.x -= dashDistance; 
 			break;
 		case (int)Direction::Right:
+			if (vPos.x + dashDistance >= Core::GetInst()->GetResolution().x - (int)m_pImage->GetWidth() / 2) {
+				vPos.x = Core::GetInst()->GetResolution().x - (int)m_pImage->GetWidth() / 2;
+				break;
+			}
 			vPos.x += dashDistance;
 		//{
 		//	float testdt = fDT;
