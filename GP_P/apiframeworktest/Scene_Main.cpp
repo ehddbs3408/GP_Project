@@ -29,8 +29,6 @@ void Scene_Main::Enter()
 {
 	ScoreMgr::GetInst()->InitScore();
 	score = 0;
-	SoundMgr::GetInst()->LoadSound(L"BGM", true, L"Sound\\pianobgm.wav");
-	SoundMgr::GetInst()->Play(L"BGM");
 	// Object Ãß°¡
 	Object* pObj = new Player;
 	pObj->SetPos(Vec2(Core::GetInst()->GetResolution().x/2, (Core::GetInst()->GetResolution().y / 2)) );

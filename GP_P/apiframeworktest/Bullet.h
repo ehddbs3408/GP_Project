@@ -9,6 +9,9 @@ private:
     float   m_fTheta; // 이동 방향
     Vec2    m_vDir;
     Image* m_pImage;
+
+    float time;
+    float liveTime;
 public:
 //    void SetDir(bool _b)
     void SetDir(float _fTheta) { m_fTheta = _fTheta; }

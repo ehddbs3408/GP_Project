@@ -9,6 +9,8 @@ Bullet::Bullet()
 	: m_fTheta(3.f * M_PI/2.f)
 	, m_vDir(Vec2(1.f,1.f))
 {
+	time = 0;
+	liveTime = 10;
 	m_pImage = ResMgr::GetInst()->ImgLoad(L"BulletImg", L"Image\\Bullet.bmp");
 	m_vDir.Normalize();
 	CreateCollider();
@@ -23,6 +25,11 @@ Bullet::~Bullet()
 
 void Bullet::Update()
 {
+	time += fDT;
+	if (time > liveTime)
+	{
+		DeleteObject(this);
+	}
  	Vec2 vPos = GetPos();
 	//vPos.x += 700.f * fDT; 
 	//vPos.y += 700.f * fDT * m_fDir;
