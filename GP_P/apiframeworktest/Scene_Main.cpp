@@ -11,7 +11,6 @@
 #include "SceneMgr.h"
 #include "SoundMgr.h"
 #include "Boss.h"
-#include "TimeMgr.h"
 Scene_Main::Scene_Main()
 {
 }
@@ -33,8 +32,6 @@ void Scene_Main::Enter()
 	boss->SetPos(Vec2(Core::GetInst()->GetResolution().x / 2 - 50, (Core::GetInst()->GetResolution().y / 2)));
 	boss->SetScale(Vec2(100.f, 100.f));
 	AddObject(boss, GROUP_TYPE::MONSTER);
-
-	score = 0;
 
 //	Object* pOtherPlayer = new Player(*(Player*)pObj);
 	/*Object* pOtherPlayer = pObj->Clone();
@@ -90,5 +87,5 @@ void Scene_Main::Exit()
 void Scene_Main::Update()
 {  
 	Scene::Update();
-	score += fDT;
+
 }
