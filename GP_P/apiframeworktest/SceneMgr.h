@@ -5,8 +5,6 @@ class SceneMgr
 public:
 	SINGLE(SceneMgr);
 private:
-	float score;
-private:
 	SceneMgr();
 	~SceneMgr();
 private:

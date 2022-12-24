@@ -32,6 +32,13 @@ void Scene_Start::Update()
 void Scene_Start::Render(HDC _dc)
 {
 	//POINT& a = Core::GetResolution();
-	RECT rt = { 0, 0, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
+	RECT rt = { 0, Core::GetInst()->GetResolution().y/2, Core::GetInst()->GetResolution().x, Core::GetInst()->GetResolution().y };
 	DrawText(_dc, L"Press Enter To Start!", -1, &rt, DT_CENTER | DT_WORDBREAK);
 }
+
+//void Scene_Start::Render(HDC _dc)
+//{
+//	RECT rt = { 100, 100, 500, 300 };
+//	DrawText(_dc, L"Press Enter To Start!", -1, &rt, DT_CENTER | DT_WORDBREAK);
+//}
+

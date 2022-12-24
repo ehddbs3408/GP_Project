@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Scene.h"
 #include "Object.h"
-#include "Scene_Main.h"
 void Scene::Update()
 { 
 	for (UINT i = 0; i < (UINT)GROUP_TYPE::END; i++)

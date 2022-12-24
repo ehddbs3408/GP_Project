@@ -6,8 +6,7 @@
 #include "EventMgr.h"
 SceneMgr::SceneMgr()
 	: m_pCurScene(nullptr)
-	, m_arrScene{},
-	score(0)
+	, m_arrScene{}
 {
 }
 
